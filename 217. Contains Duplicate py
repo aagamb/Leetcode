@@ -1,0 +1,12 @@
+class Solution(object):
+    def containsDuplicate(self, nums):
+        
+        d = {}
+        
+        for n in nums:
+            if d.has_key(n):
+                return True
+            
+            d[n] = 1
+            
+        return False
