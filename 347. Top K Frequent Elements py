@@ -1,0 +1,17 @@
+class Solution:
+    def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+
+        d = {}
+    
+        for i in range(len(nums)):
+            
+            currNum = nums[i]
+            
+            if currNum in d:
+                d[currNum] +=1
+            else:
+                d[currNum] = 1
+                
+        sorted_dict = sorted( d.items(), key = lambda kv: kv[1], reverse = True) 
+            
+        return [t[0] for t in sorted_dict[:k]]

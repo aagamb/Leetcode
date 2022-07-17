@@ -1,0 +1,19 @@
+class Solution:
+    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+        
+        d = {}
+        
+        # sorted letters is the key
+        
+        for s in strs:
+            
+            currKey = tuple(sorted(s)) #tuple since immutable
+            
+            if currKey in d:
+                d[currKey].append(s)
+                
+            else:
+                d[currKey] = [s]
+        
+            
+        return d.values()
