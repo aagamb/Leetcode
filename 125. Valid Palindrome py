@@ -1,0 +1,25 @@
+class Solution:
+    def isPalindrome(self, s: str) -> bool:
+        cs = ""
+        for c in s:
+            if c.isalpha():
+                cs+=c.lower()
+            elif c.isdigit():
+                cs+=c
+
+        lenS = len(cs)
+
+        if lenS % 2 == 0:
+            m = int(lenS/2)
+            if cs[:m] == cs[m:][::-1]:
+                return True
+            else:
+                return False
+
+        else:
+            m = int((lenS+1) /2)
+            if cs[:m-1] == cs[m:][::-1]:
+                return True
+            else:
+                return False
+        
