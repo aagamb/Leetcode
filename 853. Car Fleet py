@@ -1,0 +1,32 @@
+class Solution:
+    def carFleet(self, target: int, position: List[int], speed: List[int]) -> int:
+        if len(position) ==1:
+            return 1
+        
+        times =[]
+        for p, s in reversed(sorted(zip(position, speed))):
+            times.append((target-p)/s)
+            if len(times)>1 and times[-1] <= times[-2]:
+                times.pop()
+                  
+        return len(times)
+            
+#         prevTime = times[-1]
+#         times = times[::-1]
+#         l = len(times)
+#         for i, time in enumerate(times):
+#             if time<prevTime:
+#                 times[i] = prevTime
+                    
+#             prevTime = times[i]
+            
+#         print(times)
+        
+            
+        
+        
+            
+            
+            
+        
+        

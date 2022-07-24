@@ -1,0 +1,31 @@
+class Solution:
+    def evalRPN(self, tokens: List[str]) -> int:
+        
+        #postfix to infix
+        numStack =[]
+        temp = None;
+        
+        for t in tokens:
+            # print(numStack)
+            
+            if t[0] == '-' and len(t)>1:
+                if t[1:].isdigit():
+                    numStack.append(int(t))
+            elif t.isdigit():
+                numStack.append(int(t))
+                
+            else:
+                num2, num1 = numStack.pop(), numStack.pop()
+                
+                if t == '+':
+                    temp = num1 + num2
+                elif t == '-':
+                    temp = num1-num2
+                elif t == "*":
+                    temp = num1*num2
+                elif t == "/":
+                    temp = num1/num2
+                numStack.append(int(temp))
+                
+        return numStack[0]
+                    
