@@ -1,0 +1,36 @@
+class Solution:
+    def searchMatrix(self, matrix: List[List[int]], target: int) -> bool:
+        
+        l, r = 0, len(matrix)-1
+        numsInList = len(matrix[0])
+        
+        while l <= r:
+            
+            m = (l+r)//2
+            
+            if matrix[m][-1] < target:
+                l = m + 1
+                
+            elif matrix[m][0] > target:
+                r = m - 1
+                
+            else:
+                break
+        
+        l, r = 0, numsInList -1
+        toFindL = matrix[m]
+        
+        while l<=r:
+            m = (l+r)//2
+            
+            if toFindL[m] == target:
+                return True
+            
+            elif toFindL[m] < target:
+                l = m+1
+            else:
+                r = m-1
+                
+        return False
+            
+            

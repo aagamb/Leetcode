@@ -1,0 +1,39 @@
+class Solution:
+    def characterReplacement(self, s: str, k: int) -> int:
+        
+        l, r = 0, 0
+        ans =0
+        d = {}
+        
+        def getMaxF(d):
+            maxF = 0
+            for v in d.values():
+                maxF = max(maxF, v)
+
+            return maxF
+        
+        while r< len(s):
+            
+            winSize = r-l+1
+            
+            d[s[r]] = 1 + d.get(s[r], 0)
+            
+            if winSize - getMaxF(d) <=k:
+                ans = max(ans, r-l+1)
+                
+            else:
+                while winSize-getMaxF(d) >k:
+                    d[s[l]] -=1
+                    l+=1
+                    winSize = r-l+1
+                    
+            r+=1
+            
+                
+        return ans
+    
+    
+                
+            
+            
+        
